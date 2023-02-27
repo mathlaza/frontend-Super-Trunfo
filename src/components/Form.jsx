@@ -37,7 +37,9 @@ class Form extends React.Component {
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
+            name="cardRare"
           >
+            <option value="" disabled>-</option>
             <option value="normal">normal</option>
             <option value="raro">raro</option>
             <option value="muito raro">muito raro</option>
@@ -51,6 +53,7 @@ class Form extends React.Component {
             data-testid="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }
+            name="cardTrunfo"
           />
         </label>
 

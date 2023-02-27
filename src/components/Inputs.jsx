@@ -22,6 +22,7 @@ class Inputs extends React.Component {
             data-testid="name-input"
             value={ cardName }
             onChange={ onInputChange }
+            name="cardName"
           />
         </label>
 
@@ -32,6 +33,7 @@ class Inputs extends React.Component {
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
+            name="cardDescription"
           />
         </label>
 
@@ -42,6 +44,7 @@ class Inputs extends React.Component {
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            name="cardAttr1"
           />
         </label>
 
@@ -52,6 +55,7 @@ class Inputs extends React.Component {
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            name="cardAttr2"
           />
         </label>
 
@@ -62,6 +66,7 @@ class Inputs extends React.Component {
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            name="cardAttr3"
           />
         </label>
 
@@ -72,6 +77,7 @@ class Inputs extends React.Component {
             data-testid="image-input"
             value={ cardImage }
             onChange={ onInputChange }
+            name="cardImage"
           />
         </label>
       </div>

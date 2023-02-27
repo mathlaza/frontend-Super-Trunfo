@@ -16,20 +16,50 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       // hasTrunfo: "",
-      isSaveButtonDisabled: false,
-      onInputChange: this.onInputChange,
+      isSaveButtonDisabled: true,
+      onInputChange: this.handleChange,
       onSaveButtonClick: () => { },
     };
   }
 
-  onInputChange = ({ target }) => {
+  handleChange = ({ target }) => {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
 
-    this.setState((previousState) => ({
-      ...previousState,
+    this.setState({
       [name]: value,
-    }));
+    }, () => {
+      const {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+      } = this.state;
+
+      let fieldsComplete = false;
+      let sumAttributes = false;
+      const numAt1 = Number(cardAttr1);
+      const numAt2 = Number(cardAttr2);
+      const numAt3 = Number(cardAttr3);
+      const maxSumAttr = 210;
+      const maxAttr = 90;
+      const checkAt1 = numAt1 <= maxAttr && numAt1 >= 0;
+      const checkAt2 = numAt2 <= maxAttr && numAt2 >= 0;
+      const checkAt3 = numAt3 <= maxAttr && numAt3 >= 0;
+
+      if (cardName && cardDescription && cardImage && cardRare) fieldsComplete = true;
+      if (numAt1 + numAt2 + numAt3 <= maxSumAttr) sumAttributes = true;
+
+      const checkAllAttr = checkAt1 && checkAt2 && checkAt3;
+      const buttonEnable = fieldsComplete && sumAttributes && checkAllAttr;
+
+      this.setState({
+        isSaveButtonDisabled: !buttonEnable,
+      });
+    });
   }
 
   render() {

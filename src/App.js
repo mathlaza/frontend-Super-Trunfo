@@ -9,16 +9,17 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      // hasTrunfo: "",
+      // hasTrunfo: false,
       isSaveButtonDisabled: true,
       onInputChange: this.handleChange,
-      onSaveButtonClick: () => { },
+      onSaveButtonClick: this.handleSave,
+      savedCards: [],
     };
   }
 
@@ -60,6 +61,55 @@ class App extends React.Component {
         isSaveButtonDisabled: !buttonEnable,
       });
     });
+  }
+
+  handleSave = (event) => {
+    event.preventDefault();
+
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      savedCards,
+    } = this.state;
+
+    const cardCreated = {
+      Nome: cardName,
+      Descrição: cardDescription,
+      Attr1: cardAttr1,
+      Attr2: cardAttr2,
+      Attr3: cardAttr3,
+      Imagem: cardImage,
+      Raridade: cardRare,
+      Trunfo: cardTrunfo,
+    };
+
+    this.setState((prevState) => {
+      const deckAnterior = prevState.savedCards;
+      return cardCreated.Trunfo ? {
+        // hasTrunfo: true,
+        savedCards: [...deckAnterior, cardCreated],
+      } : {
+        savedCards: [...deckAnterior, cardCreated],
+      };
+    }, () => {
+      this.setState({
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardImage: '',
+        cardRare: 'normal',
+        cardTrunfo: false,
+      });
+    });
+    console.log(savedCards);
   }
 
   render() {

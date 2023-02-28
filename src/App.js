@@ -20,6 +20,7 @@ class App extends React.Component {
       onInputChange: this.handleChange,
       onSaveButtonClick: this.handleSave,
       savedCards: [],
+      onDeleteClick: this.handleDelete,
     };
   }
 
@@ -111,6 +112,15 @@ class App extends React.Component {
     });
   }
 
+  handleDelete = ({ target }) => {
+    const { savedCards } = this.state;
+    const cardsLeft = savedCards.filter((card) => card.Nome !== target.name);
+    const checkTrunfo = cardsLeft.find((card) => card.Trunfo);
+
+    this.setState({ savedCards: cardsLeft });
+    if (!checkTrunfo) this.setState({ hasTrunfo: false });
+  }
+
   render() {
     const {
       cardName,
@@ -126,6 +136,7 @@ class App extends React.Component {
       onInputChange,
       onSaveButtonClick,
       savedCards,
+      onDeleteClick,
     } = this.state;
 
     return (
@@ -181,6 +192,15 @@ class App extends React.Component {
                   cardRare={ Raridade }
                   cardTrunfo={ Trunfo }
                 />
+
+                <button
+                  data-testid="delete-button"
+                  name={ Nome }
+                  type="button"
+                  onClick={ onDeleteClick }
+                >
+                  Excluir
+                </button>
               </div>
             );
           })}

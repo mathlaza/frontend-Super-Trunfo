@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
+import Filters from './components/Filters';
 import Form from './components/Form';
 
 class App extends React.Component {
@@ -21,6 +22,9 @@ class App extends React.Component {
       onSaveButtonClick: this.handleSave,
       savedCards: [],
       onDeleteClick: this.handleDelete,
+      findName: '',
+      findRare: '',
+      findTrunfo: false,
     };
   }
 
@@ -137,7 +141,16 @@ class App extends React.Component {
       onSaveButtonClick,
       savedCards,
       onDeleteClick,
+      findName,
+      findRare,
+      findTrunfo,
     } = this.state;
+
+    const cardsFiltered = findTrunfo
+      ? savedCards.filter((card) => card.Trunfo) : (savedCards
+        .filter(({ Nome }) => Nome.toLowerCase().includes(findName.toLowerCase()))
+        .filter(({ Raridade }) => (
+          (findRare === 'todas' || !findRare) ? Raridade : Raridade === findRare)));
 
     return (
       <main>
@@ -167,8 +180,13 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
 
+        <Filters
+          onInputChange={ onInputChange }
+          findTrunfo={ findTrunfo }
+        />
+
         <div className="cardSaved">
-          {savedCards.map((card) => {
+          {cardsFiltered.map((card) => {
             const {
               Nome,
               Descrição,

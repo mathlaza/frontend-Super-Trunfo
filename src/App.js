@@ -19,9 +19,9 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: false,
+      hasTrunfo: JSON.parse(localStorage.getItem('hasTrunfo')) || false,
       isSaveButtonDisabled: true,
-      savedCards: [],
+      savedCards: JSON.parse(localStorage.getItem('savedCards')) || [],
       findName: '',
       findRare: '',
       findTrunfo: false,
@@ -115,8 +115,9 @@ class App extends React.Component {
         cardTrunfo: false,
         isSaveButtonDisabled: true,
       });
-      const { savedCards } = this.state;
+      const { savedCards, hasTrunfo } = this.state;
       localStorage.setItem('savedCards', JSON.stringify(savedCards));
+      localStorage.setItem('hasTrunfo', JSON.stringify(hasTrunfo));
     });
   }
 
@@ -126,9 +127,14 @@ class App extends React.Component {
     const checkTrunfo = cardsLeft.find((card) => card.Trunfo);
 
     this.setState({ savedCards: cardsLeft });
-    if (!checkTrunfo) this.setState({ hasTrunfo: false });
-
     localStorage.setItem('savedCards', JSON.stringify(cardsLeft));
+
+    if (!checkTrunfo) {
+      this.setState({ hasTrunfo: false }, () => {
+        const { hasTrunfo } = this.state;
+        localStorage.setItem('hasTrunfo', JSON.stringify(hasTrunfo));
+      });
+    }
   }
 
   goCreationMode = () => {

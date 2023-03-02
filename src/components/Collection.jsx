@@ -54,14 +54,14 @@ class Collection extends Component {
 
 Collection.propTypes = {
   cardsFiltered: PropTypes.arrayOf(PropTypes.shape({
-    cardName: PropTypes.string.isRequired,
-    cardDescription: PropTypes.string.isRequired,
-    cardAttr1: PropTypes.string.isRequired,
-    cardAttr2: PropTypes.string.isRequired,
-    cardAttr3: PropTypes.string.isRequired,
-    cardImage: PropTypes.string.isRequired,
-    cardRare: PropTypes.string.isRequired,
-    cardTrunfo: PropTypes.bool.isRequired,
+    Nome: PropTypes.string.isRequired,
+    Descrição: PropTypes.string.isRequired,
+    Attr1: PropTypes.string.isRequired,
+    Attr2: PropTypes.string.isRequired,
+    Attr3: PropTypes.string.isRequired,
+    Imagem: PropTypes.string.isRequired,
+    Raridade: PropTypes.string.isRequired,
+    Trunfo: PropTypes.bool.isRequired,
   })).isRequired,
   handleDelete: PropTypes.func.isRequired,
 };

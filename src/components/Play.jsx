@@ -10,7 +10,11 @@ class Play extends Component {
     return (
       <main>
         <div>Play</div>
-        <div>{savedCards}</div>
+        <div>
+          {savedCards.length}
+          { ' ' }
+          {savedCards.length <= 1 ? <span>Carta</span> : <span>Cartas</span>}
+        </div>
         <div>Meu Baralho</div>
       </main>
     );
@@ -19,14 +23,14 @@ class Play extends Component {
 
 Play.propTypes = {
   savedCards: PropTypes.arrayOf(PropTypes.shape({
-    cardName: PropTypes.string.isRequired,
-    cardDescription: PropTypes.string.isRequired,
-    cardAttr1: PropTypes.string.isRequired,
-    cardAttr2: PropTypes.string.isRequired,
-    cardAttr3: PropTypes.string.isRequired,
-    cardImage: PropTypes.string.isRequired,
-    cardRare: PropTypes.string.isRequired,
-    cardTrunfo: PropTypes.bool.isRequired,
+    Nome: PropTypes.string.isRequired,
+    Descrição: PropTypes.string.isRequired,
+    Attr1: PropTypes.string.isRequired,
+    Attr2: PropTypes.string.isRequired,
+    Attr3: PropTypes.string.isRequired,
+    Imagem: PropTypes.string.isRequired,
+    Raridade: PropTypes.string.isRequired,
+    Trunfo: PropTypes.bool.isRequired,
   })).isRequired,
 };
 

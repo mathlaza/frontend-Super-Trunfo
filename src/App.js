@@ -1,7 +1,10 @@
 import React from 'react';
 import Card from './components/Card';
+import Collection from './components/Collection';
 import Filters from './components/Filters';
 import Form from './components/Form';
+import NavBar from './components/NavBar';
+import Play from './components/Play';
 
 class App extends React.Component {
   constructor() {
@@ -18,13 +21,12 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      onInputChange: this.handleChange,
-      onSaveButtonClick: this.handleSave,
       savedCards: [],
-      onDeleteClick: this.handleDelete,
       findName: '',
       findRare: '',
       findTrunfo: false,
+      creationMode: true,
+      playMode: false,
     };
   }
 
@@ -113,6 +115,8 @@ class App extends React.Component {
         cardTrunfo: false,
         isSaveButtonDisabled: true,
       });
+      const { savedCards } = this.state;
+      localStorage.setItem('savedCards', JSON.stringify(savedCards));
     });
   }
 
@@ -123,6 +127,16 @@ class App extends React.Component {
 
     this.setState({ savedCards: cardsLeft });
     if (!checkTrunfo) this.setState({ hasTrunfo: false });
+
+    localStorage.setItem('savedCards', JSON.stringify(cardsLeft));
+  }
+
+  goCreationMode = () => {
+    this.setState({ creationMode: true, playMode: false });
+  }
+
+  goPlayMode = () => {
+    this.setState({ playMode: true, creationMode: false });
   }
 
   render() {
@@ -137,13 +151,12 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      onInputChange,
-      onSaveButtonClick,
       savedCards,
-      onDeleteClick,
       findName,
       findRare,
       findTrunfo,
+      creationMode,
+      playMode,
     } = this.state;
 
     const cardsFiltered = findTrunfo
@@ -154,75 +167,53 @@ class App extends React.Component {
 
     return (
       <main>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ onInputChange }
-          onSaveButtonClick={ onSaveButtonClick }
+        <NavBar
+          goCreationMode={ this.goCreationMode }
+          goPlayMode={ this.goPlayMode }
         />
 
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
+        {creationMode
+          && (
+            <section>
+              <Form
+                cardName={ cardName }
+                cardDescription={ cardDescription }
+                cardAttr1={ cardAttr1 }
+                cardAttr2={ cardAttr2 }
+                cardAttr3={ cardAttr3 }
+                cardImage={ cardImage }
+                cardRare={ cardRare }
+                cardTrunfo={ cardTrunfo }
+                hasTrunfo={ hasTrunfo }
+                isSaveButtonDisabled={ isSaveButtonDisabled }
+                handleChange={ this.handleChange }
+                handleSave={ this.handleSave }
+              />
 
-        <Filters
-          onInputChange={ onInputChange }
-          findTrunfo={ findTrunfo }
-        />
+              <Card
+                cardName={ cardName }
+                cardDescription={ cardDescription }
+                cardAttr1={ cardAttr1 }
+                cardAttr2={ cardAttr2 }
+                cardAttr3={ cardAttr3 }
+                cardImage={ cardImage }
+                cardRare={ cardRare }
+                cardTrunfo={ cardTrunfo }
+              />
 
-        <div className="cardSaved">
-          {cardsFiltered.map((card) => {
-            const {
-              Nome,
-              Descrição,
-              Attr1,
-              Attr2,
-              Attr3,
-              Imagem,
-              Raridade,
-              Trunfo,
-            } = card;
+              <Filters
+                handleChange={ this.handleChange }
+                findTrunfo={ findTrunfo }
+              />
 
-            return (
-              <div key={ Nome }>
-                <Card
-                  cardName={ Nome }
-                  cardDescription={ Descrição }
-                  cardAttr1={ Attr1 }
-                  cardAttr2={ Attr2 }
-                  cardAttr3={ Attr3 }
-                  cardImage={ Imagem }
-                  cardRare={ Raridade }
-                  cardTrunfo={ Trunfo }
-                />
+              <Collection
+                cardsFiltered={ cardsFiltered }
+                handleDelete={ this.handleDelete }
+              />
+            </section>)}
 
-                <button
-                  data-testid="delete-button"
-                  name={ Nome }
-                  type="button"
-                  onClick={ onDeleteClick }
-                >
-                  Excluir
-                </button>
-              </div>
-            );
-          })}
-        </div>
+        {playMode
+          && <Play savedCards={ savedCards } />}
       </main>
     );
   }

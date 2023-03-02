@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Filters extends Component {
   render() {
     const {
-      onInputChange,
+      handleChange,
       findTrunfo,
     } = this.props;
 
@@ -15,13 +15,13 @@ class Filters extends Component {
           name="findName"
           data-testid="name-filter"
           placeholder="Card name"
-          onChange={ onInputChange }
+          onChange={ handleChange }
           disabled={ findTrunfo }
         />
         <select
           name="findRare"
           data-testid="rare-filter"
-          onChange={ onInputChange }
+          onChange={ handleChange }
           disabled={ findTrunfo }
           defaultValue="todas"
         >
@@ -35,7 +35,7 @@ class Filters extends Component {
             type="checkbox"
             name="findTrunfo"
             data-testid="trunfo-filter"
-            onChange={ onInputChange }
+            onChange={ handleChange }
           />
           Find SuperTrunfo
         </label>
@@ -45,7 +45,7 @@ class Filters extends Component {
 }
 
 Filters.propTypes = {
-  onInputChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
   findTrunfo: PropTypes.bool.isRequired,
 };
 

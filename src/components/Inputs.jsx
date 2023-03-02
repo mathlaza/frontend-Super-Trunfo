@@ -5,7 +5,7 @@ class Inputs extends React.Component {
   render() {
     const {
       cardName,
-      onInputChange,
+      handleChange,
       cardDescription,
       cardAttr1,
       cardAttr2,
@@ -21,7 +21,7 @@ class Inputs extends React.Component {
             type="text"
             data-testid="name-input"
             value={ cardName }
-            onChange={ onInputChange }
+            onChange={ handleChange }
             name="cardName"
           />
         </label>
@@ -32,7 +32,7 @@ class Inputs extends React.Component {
             type="textarea"
             data-testid="description-input"
             value={ cardDescription }
-            onChange={ onInputChange }
+            onChange={ handleChange }
             name="cardDescription"
           />
         </label>
@@ -43,7 +43,7 @@ class Inputs extends React.Component {
             type="number"
             data-testid="attr1-input"
             value={ cardAttr1 }
-            onChange={ onInputChange }
+            onChange={ handleChange }
             name="cardAttr1"
           />
         </label>
@@ -54,7 +54,7 @@ class Inputs extends React.Component {
             type="number"
             data-testid="attr2-input"
             value={ cardAttr2 }
-            onChange={ onInputChange }
+            onChange={ handleChange }
             name="cardAttr2"
           />
         </label>
@@ -65,7 +65,7 @@ class Inputs extends React.Component {
             type="number"
             data-testid="attr3-input"
             value={ cardAttr3 }
-            onChange={ onInputChange }
+            onChange={ handleChange }
             name="cardAttr3"
           />
         </label>
@@ -76,7 +76,7 @@ class Inputs extends React.Component {
             type="text"
             data-testid="image-input"
             value={ cardImage }
-            onChange={ onInputChange }
+            onChange={ handleChange }
             name="cardImage"
           />
         </label>
@@ -92,7 +92,7 @@ Inputs.propTypes = {
   cardAttr2: PropTypes.string.isRequired,
   cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
-  onInputChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default Inputs;

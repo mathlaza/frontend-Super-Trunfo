@@ -15,15 +15,15 @@ class Form extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      onInputChange,
-      onSaveButtonClick,
+      handleChange,
+      handleSave,
     } = this.props;
 
     return (
       <form>
         <Inputs
           cardName={ cardName }
-          onInputChange={ onInputChange }
+          handleChange={ handleChange }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
           cardAttr2={ cardAttr2 }
@@ -36,7 +36,7 @@ class Form extends React.Component {
           <select
             data-testid="rare-input"
             value={ cardRare }
-            onChange={ onInputChange }
+            onChange={ handleChange }
             name="cardRare"
           >
             <option value="" disabled>-</option>
@@ -54,7 +54,7 @@ class Form extends React.Component {
                 type="checkbox"
                 data-testid="trunfo-input"
                 checked={ cardTrunfo }
-                onChange={ onInputChange }
+                onChange={ handleChange }
                 name="cardTrunfo"
               />
             </label>
@@ -65,7 +65,7 @@ class Form extends React.Component {
           type="submit"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
+          onClick={ handleSave }
         >
           Salvar
         </button>
@@ -85,8 +85,8 @@ Form.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onSaveButtonClick: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSave: PropTypes.func.isRequired,
 };
 
 export default Form;

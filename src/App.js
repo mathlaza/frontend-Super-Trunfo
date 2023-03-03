@@ -5,6 +5,7 @@ import Filters from './components/Filters';
 import Form from './components/Form';
 import NavBar from './components/NavBar';
 import Play from './components/Play';
+import fieldValidations from './Validations';
 
 class App extends React.Component {
   constructor() {
@@ -16,7 +17,7 @@ class App extends React.Component {
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
-      cardImage: '',
+      cardImage: null,
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: JSON.parse(localStorage.getItem('hasTrunfo')) || false,
@@ -37,32 +38,9 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, () => {
-      const {
-        cardName,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardImage,
-        cardRare,
-      } = this.state;
+      const allState = this.state;
 
-      let fieldsComplete = false;
-      let sumAttributes = false;
-      const numAt1 = Number(cardAttr1);
-      const numAt2 = Number(cardAttr2);
-      const numAt3 = Number(cardAttr3);
-      const maxSumAttr = 210;
-      const maxAttr = 90;
-      const checkAt1 = numAt1 <= maxAttr && numAt1 >= 0;
-      const checkAt2 = numAt2 <= maxAttr && numAt2 >= 0;
-      const checkAt3 = numAt3 <= maxAttr && numAt3 >= 0;
-
-      if (cardName && cardDescription && cardImage && cardRare) fieldsComplete = true;
-      if (numAt1 + numAt2 + numAt3 <= maxSumAttr) sumAttributes = true;
-
-      const checkAllAttr = checkAt1 && checkAt2 && checkAt3;
-      const buttonEnable = fieldsComplete && sumAttributes && checkAllAttr;
+      const buttonEnable = fieldValidations(allState);
 
       this.setState({
         isSaveButtonDisabled: !buttonEnable,
@@ -110,7 +88,7 @@ class App extends React.Component {
         cardAttr1: '0',
         cardAttr2: '0',
         cardAttr3: '0',
-        cardImage: '',
+        cardImage: null,
         cardRare: 'normal',
         cardTrunfo: false,
         isSaveButtonDisabled: true,
@@ -135,6 +113,15 @@ class App extends React.Component {
         localStorage.setItem('hasTrunfo', JSON.stringify(hasTrunfo));
       });
     }
+  }
+
+  handleImage = ({ target }) => {
+    // this.setState({ cardImage: target.files[0] });
+
+    const binaryData = [];
+    binaryData.push(target.files[0]);
+    const xablau = URL.createObjectURL(new Blob(binaryData, { type: 'application/zip' }));
+    this.setState({ cardImage: xablau });
   }
 
   goCreationMode = () => {
@@ -187,7 +174,7 @@ class App extends React.Component {
                 cardAttr1={ cardAttr1 }
                 cardAttr2={ cardAttr2 }
                 cardAttr3={ cardAttr3 }
-                cardImage={ cardImage }
+                handleImage={ this.handleImage }
                 cardRare={ cardRare }
                 cardTrunfo={ cardTrunfo }
                 hasTrunfo={ hasTrunfo }

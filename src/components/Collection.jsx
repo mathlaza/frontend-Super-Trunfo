@@ -11,7 +11,7 @@ class Collection extends Component {
 
     return (
       <div className="cardSaved">
-        {cardsFiltered.map((card) => {
+        {cardsFiltered.map((card, index) => {
           const {
             Nome,
             Descrição,
@@ -24,7 +24,7 @@ class Collection extends Component {
           } = card;
 
           return (
-            <div key={ Nome }>
+            <div key={ index }>
               <Card
                 cardName={ Nome }
                 cardDescription={ Descrição }

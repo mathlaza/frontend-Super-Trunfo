@@ -17,40 +17,45 @@ class Card extends React.Component {
     return (
       <div>
         <div data-testid="name-card">
-          { cardName }
+          {cardName}
         </div>
-
-        <img
-          src={ cardImage }
-          alt={ cardName }
-          data-testid="image-card"
-        />
+        {cardImage
+          && <img
+            src={ cardImage }
+            alt={ cardName }
+            data-testid="image-card"
+            style={ { width: '100px' } }
+          />}
 
         <div data-testid="description-card">
-          { cardDescription }
+          {cardDescription}
         </div>
 
         <div data-testid="attr1-card">
-          { cardAttr1 }
+          {cardAttr1}
         </div>
 
         <div data-testid="attr2-card">
-          { cardAttr2 }
+          {cardAttr2}
         </div>
 
         <div data-testid="attr3-card">
-          { cardAttr3 }
+          {cardAttr3}
         </div>
 
         <div data-testid="rare-card">
-          { cardRare }
+          {cardRare}
         </div>
 
-        { cardTrunfo && <div data-testid="trunfo-card">Super Trunfo</div> }
+        {cardTrunfo && <div data-testid="trunfo-card">Super Trunfo</div>}
       </div>
     );
   }
 }
+
+Card.defaultProps = {
+  cardImage: PropTypes.shape(),
+};
 
 Card.propTypes = {
   cardName: PropTypes.string.isRequired,
@@ -58,7 +63,7 @@ Card.propTypes = {
   cardAttr1: PropTypes.string.isRequired,
   cardAttr2: PropTypes.string.isRequired,
   cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
+  cardImage: PropTypes.string,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
 };

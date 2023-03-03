@@ -10,7 +10,7 @@ class Form extends React.Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardImage,
+      handleImage,
       cardRare,
       cardTrunfo,
       hasTrunfo,
@@ -28,7 +28,7 @@ class Form extends React.Component {
           cardAttr1={ cardAttr1 }
           cardAttr2={ cardAttr2 }
           cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
+          handleImage={ handleImage }
         />
 
         <label htmlFor="Rarity">
@@ -80,7 +80,7 @@ Form.propTypes = {
   cardAttr1: PropTypes.string.isRequired,
   cardAttr2: PropTypes.string.isRequired,
   cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
+  handleImage: PropTypes.func.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,

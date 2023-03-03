@@ -10,7 +10,7 @@ class Inputs extends React.Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardImage,
+      handleImage,
     } = this.props;
 
     return (
@@ -73,10 +73,9 @@ class Inputs extends React.Component {
         <label htmlFor="Image">
           Image
           <input
-            type="text"
+            type="file"
             data-testid="image-input"
-            value={ cardImage }
-            onChange={ handleChange }
+            onChange={ handleImage }
             name="cardImage"
           />
         </label>
@@ -91,7 +90,7 @@ Inputs.propTypes = {
   cardAttr1: PropTypes.string.isRequired,
   cardAttr2: PropTypes.string.isRequired,
   cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
+  handleImage: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 

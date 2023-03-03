@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Card from './Card';
+import Card from '../Card';
 
 class Collection extends Component {
   render() {
@@ -12,33 +12,26 @@ class Collection extends Component {
     return (
       <div className="cardSaved">
         {cardsFiltered.map((card, index) => {
-          const {
-            Nome,
-            Descrição,
-            Attr1,
-            Attr2,
-            Attr3,
-            Imagem,
-            Raridade,
-            Trunfo,
-          } = card;
+          const allState = {
+            cardName: card.Nome,
+            cardDescription: card.Descrição,
+            cardAttr1: card.Attr1,
+            cardAttr2: card.Attr2,
+            cardAttr3: card.Attr3,
+            cardImage: card.Imagem,
+            cardRare: card.Raridade,
+            cardTrunfo: card.Trunfo,
+          };
 
           return (
             <div key={ index }>
               <Card
-                cardName={ Nome }
-                cardDescription={ Descrição }
-                cardAttr1={ Attr1 }
-                cardAttr2={ Attr2 }
-                cardAttr3={ Attr3 }
-                cardImage={ Imagem }
-                cardRare={ Raridade }
-                cardTrunfo={ Trunfo }
+                allState={ allState }
               />
 
               <button
                 data-testid="delete-button"
-                name={ Nome }
+                name={ card.Nome }
                 type="button"
                 onClick={ handleDelete }
               >

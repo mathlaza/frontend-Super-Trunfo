@@ -8,7 +8,7 @@ class Play extends Component {
     } = this.props;
 
     return (
-      <main>
+      <section>
         <div>Play</div>
         <div>
           {savedCards.length}
@@ -16,7 +16,7 @@ class Play extends Component {
           {savedCards.length <= 1 ? <span>Carta</span> : <span>Cartas</span>}
         </div>
         <div>Meu Baralho</div>
-      </main>
+      </section>
     );
   }
 }

@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 class Card extends React.Component {
   render() {
     const {
+      allState,
+    } = this.props;
+
+    const {
       cardName,
       cardDescription,
       cardAttr1,
@@ -12,7 +16,7 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-    } = this.props;
+    } = allState;
 
     return (
       <div>
@@ -54,18 +58,20 @@ class Card extends React.Component {
 }
 
 Card.defaultProps = {
-  cardImage: PropTypes.shape(),
+  allState: PropTypes.func,
 };
 
 Card.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string,
-  cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
+  allState: PropTypes.shape({
+    cardName: PropTypes.string.isRequired,
+    cardDescription: PropTypes.string.isRequired,
+    cardAttr1: PropTypes.string.isRequired,
+    cardAttr2: PropTypes.string.isRequired,
+    cardAttr3: PropTypes.string.isRequired,
+    cardImage: PropTypes.string,
+    cardRare: PropTypes.string.isRequired,
+    cardTrunfo: PropTypes.bool.isRequired,
+  }),
 };
 
 export default Card;

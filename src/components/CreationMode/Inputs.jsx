@@ -4,14 +4,18 @@ import PropTypes from 'prop-types';
 class Inputs extends React.Component {
   render() {
     const {
-      cardName,
+      allState,
       handleChange,
+      handleImage,
+    } = this.props;
+
+    const {
+      cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      handleImage,
-    } = this.props;
+    } = allState;
 
     return (
       <div>
@@ -85,13 +89,15 @@ class Inputs extends React.Component {
 }
 
 Inputs.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  handleImage: PropTypes.func.isRequired,
+  allState: PropTypes.shape({
+    cardName: PropTypes.string.isRequired,
+    cardDescription: PropTypes.string.isRequired,
+    cardAttr1: PropTypes.string.isRequired,
+    cardAttr2: PropTypes.string.isRequired,
+    cardAttr3: PropTypes.string.isRequired,
+  }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  handleImage: PropTypes.func.isRequired,
 };
 
 export default Inputs;

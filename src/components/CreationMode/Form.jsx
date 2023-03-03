@@ -5,29 +5,24 @@ import Inputs from './Inputs';
 class Form extends React.Component {
   render() {
     const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
+      allState,
+      handleChange,
+      handleSave,
       handleImage,
+    } = this.props;
+
+    const {
       cardRare,
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      handleChange,
-      handleSave,
-    } = this.props;
+    } = allState;
 
     return (
       <form>
         <Inputs
-          cardName={ cardName }
+          allState={ allState }
           handleChange={ handleChange }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
           handleImage={ handleImage }
         />
 
@@ -75,18 +70,15 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  handleImage: PropTypes.func.isRequired,
-  cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  allState: PropTypes.shape({
+    cardRare: PropTypes.string.isRequired,
+    cardTrunfo: PropTypes.bool.isRequired,
+    hasTrunfo: PropTypes.bool.isRequired,
+    isSaveButtonDisabled: PropTypes.bool.isRequired,
+  }).isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSave: PropTypes.func.isRequired,
+  handleImage: PropTypes.func.isRequired,
 };
 
 export default Form;

@@ -31,6 +31,14 @@ class App extends React.Component {
     };
   }
 
+  updateButtonEnable = () => {
+    const allState = this.state;
+    const buttonEnable = fieldValidations(allState);
+    this.setState({
+      isSaveButtonDisabled: !buttonEnable,
+    });
+  }
+
   handleChange = ({ target }) => {
     const { name } = target;
     const value = (target.type === 'checkbox') ? target.checked : target.value;
@@ -38,13 +46,7 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, () => {
-      const allState = this.state;
-
-      const buttonEnable = fieldValidations(allState);
-
-      this.setState({
-        isSaveButtonDisabled: !buttonEnable,
-      });
+      this.updateButtonEnable();
     });
   }
 
@@ -88,7 +90,7 @@ class App extends React.Component {
         cardAttr1: '0',
         cardAttr2: '0',
         cardAttr3: '0',
-        cardImage: null,
+        // cardImage: null,
         cardRare: 'normal',
         cardTrunfo: false,
         isSaveButtonDisabled: true,
@@ -116,12 +118,12 @@ class App extends React.Component {
   }
 
   handleImage = ({ target }) => {
-    // this.setState({ cardImage: target.files[0] });
-
     const binaryData = [];
     binaryData.push(target.files[0]);
-    const xablau = URL.createObjectURL(new Blob(binaryData, { type: 'application/zip' }));
-    this.setState({ cardImage: xablau });
+    const blob = URL.createObjectURL(new Blob(binaryData, { type: 'application/zip' }));
+    this.setState({ cardImage: blob }, () => {
+      this.updateButtonEnable();
+    });
   }
 
   goCreationMode = () => {

@@ -27,9 +27,20 @@ const fieldValidations = (allState) => {
 
   const checkAllAttr = checkAt1 && checkAt2 && checkAt3;
   const buttonEnable = fieldsComplete && sumAttributes
-  && checkAllAttr && !findNameRepeated;
+    && checkAllAttr && !findNameRepeated;
 
   return buttonEnable;
 };
 
-export default fieldValidations;
+const imageValidation = (image) => {
+  const extension = image.name.split('.').pop();
+  const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+  if (allowedExtensions.includes(extension)) {
+    return image;
+  }
+  // eslint-disable-next-line no-alert
+  alert(`Please upload ${allowedExtensions.join(', ')} files`);
+};
+
+export { fieldValidations, imageValidation };

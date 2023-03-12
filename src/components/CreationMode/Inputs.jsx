@@ -74,10 +74,12 @@ class Inputs extends React.Component {
           />
         </label>
 
-        <label htmlFor="Image">
+        <label htmlFor="img_input">
           Image
           <input
+            id="img_input"
             type="file"
+            accept="image/jpg, image/jpeg, image/png, image/gif"
             data-testid="image-input"
             onChange={ handleImage }
             name="cardImage"

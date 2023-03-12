@@ -3,7 +3,7 @@ import Form from '../components/CreationMode/Form';
 import Card from '../components/Card';
 import Filters from '../components/CreationMode/Filters';
 import Collection from '../components/CreationMode/Collection';
-import fieldValidations from '../Validations';
+import { fieldValidations, imageValidation } from '../Validations';
 
 class Creation extends Component {
   constructor() {
@@ -113,8 +113,10 @@ class Creation extends Component {
   }
 
   handleImage = ({ target }) => {
+    const image = imageValidation(target.files[0]);
+
     const binaryData = [];
-    binaryData.push(target.files[0]);
+    binaryData.push(image);
     const blob = URL.createObjectURL(new Blob(binaryData, { type: 'application/zip' }));
     this.setState({ cardImage: blob }, () => {
       this.updateButtonEnable();

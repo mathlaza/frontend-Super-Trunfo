@@ -28,7 +28,7 @@ class Card extends React.Component {
             src={ cardImage }
             alt={ cardName }
             data-testid="image-card"
-            style={ { width: '100px' } }
+            style={ { width: '200px' } }
           />}
 
         <div data-testid="description-card">

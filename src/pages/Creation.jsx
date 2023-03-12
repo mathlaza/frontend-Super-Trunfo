@@ -152,6 +152,8 @@ class Creation extends Component {
           allState={ this.state }
         />
 
+        {isSaveButtonDisabled && <span id="invalid_field">Preencha Corretamente!</span>}
+
         <Filters
           handleChange={ this.handleChange }
           findTrunfo={ findTrunfo }

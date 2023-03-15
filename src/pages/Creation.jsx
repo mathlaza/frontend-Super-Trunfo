@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Form from '../components/CreationMode/Form';
-import Card from '../components/Card';
+import Card from '../components/CreationMode/Card';
 import Filters from '../components/CreationMode/Filters';
 import Collection from '../components/CreationMode/Collection';
 import { fieldValidations, imageValidation } from '../Validations';

@@ -23,7 +23,6 @@ class Inputs extends React.Component {
           Name
           <input
             type="text"
-            data-testid="name-input"
             value={ cardName }
             onChange={ handleChange }
             name="cardName"
@@ -34,7 +33,6 @@ class Inputs extends React.Component {
           Description
           <input
             type="textarea"
-            data-testid="description-input"
             value={ cardDescription }
             onChange={ handleChange }
             name="cardDescription"
@@ -45,7 +43,6 @@ class Inputs extends React.Component {
           Attr1
           <input
             type="number"
-            data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ handleChange }
             name="cardAttr1"
@@ -56,7 +53,6 @@ class Inputs extends React.Component {
           Attr2
           <input
             type="number"
-            data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ handleChange }
             name="cardAttr2"
@@ -67,7 +63,6 @@ class Inputs extends React.Component {
           Attr3
           <input
             type="number"
-            data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ handleChange }
             name="cardAttr3"
@@ -80,7 +75,6 @@ class Inputs extends React.Component {
             id="img_input"
             type="file"
             accept="image/jpg, image/jpeg, image/png, image/gif"
-            data-testid="image-input"
             onChange={ handleImage }
             name="cardImage"
           />

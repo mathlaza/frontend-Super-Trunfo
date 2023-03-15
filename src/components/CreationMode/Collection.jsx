@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Card from '../Card';
+import Card from './Card';
 
 class Collection extends Component {
   render() {
@@ -30,7 +30,6 @@ class Collection extends Component {
               />
 
               <button
-                data-testid="delete-button"
                 name={ card.Nome }
                 type="button"
                 onClick={ handleDelete }

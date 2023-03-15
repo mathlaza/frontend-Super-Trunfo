@@ -13,14 +13,12 @@ class Filters extends Component {
         <input
           type="text"
           name="findName"
-          data-testid="name-filter"
           placeholder="Card name"
           onChange={ handleChange }
           disabled={ findTrunfo }
         />
         <select
           name="findRare"
-          data-testid="rare-filter"
           onChange={ handleChange }
           disabled={ findTrunfo }
           defaultValue="todas"
@@ -34,7 +32,6 @@ class Filters extends Component {
           <input
             type="checkbox"
             name="findTrunfo"
-            data-testid="trunfo-filter"
             onChange={ handleChange }
           />
           Find SuperTrunfo

@@ -29,7 +29,6 @@ class Form extends React.Component {
         <label htmlFor="Rarity">
           Rarity
           <select
-            data-testid="rare-input"
             value={ cardRare }
             onChange={ handleChange }
             name="cardRare"
@@ -47,7 +46,6 @@ class Form extends React.Component {
               Super Trunfo
               <input
                 type="checkbox"
-                data-testid="trunfo-input"
                 checked={ cardTrunfo }
                 onChange={ handleChange }
                 name="cardTrunfo"
@@ -58,7 +56,6 @@ class Form extends React.Component {
 
         <button
           type="submit"
-          data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ handleSave }
         >

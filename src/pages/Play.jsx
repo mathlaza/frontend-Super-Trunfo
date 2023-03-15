@@ -1,15 +1,44 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Card from '../components/Card';
+import CardPlaying from '../components/PlayMode/CardPlaying';
+import Card from '../components/CreationMode/Card';
 
 class Play extends Component {
+  constructor({ savedCards }) {
+    super();
+
+    const shuffleParam = 0.5;
+
+    this.state = {
+      cardsShuffled: savedCards.sort(() => Math.random() - shuffleParam),
+    };
+  }
+
   render() {
     const {
       savedCards,
     } = this.props;
 
-    const shuffleParam = 0.5;
-    const cardsShuffled = savedCards.sort(() => Math.random() - shuffleParam);
+    // const shuffleParam = 0.5;
+    // const cardsShuffled = savedCards.sort(() => Math.random() - shuffleParam);
+
+    const handleChoice = (valor, target) => {
+      const { cardsShuffled } = this.state;
+      const attrChosen = target.target.value;
+
+      if (Number(valor) > Number(cardsShuffled[cardsShuffled.length - 1][attrChosen])) {
+        console.log(valor, 'É MAIOR');
+      }
+      console.log('sequencia dos cards:', cardsShuffled);
+
+      // this.setState({
+      //   merda: cardsShuffled,
+      // }, () => {
+      //   console.log(cardsShuffled);
+      // });
+    };
+
+    const { cardsShuffled } = this.state;
 
     const playerDeckMount = (index) => [cardsShuffled[index]].map((card) => {
       const allState = {
@@ -42,8 +71,9 @@ class Play extends Component {
             <section>
               <h3>Player 1</h3>
               <div>
-                <Card
+                <CardPlaying
                   allState={ playerDeckMount(0)[0] }
+                  handleChoice={ handleChoice }
                 />
               </div>
 

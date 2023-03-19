@@ -14,6 +14,11 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { savedCards } = this.state;
+    localStorage.setItem('savedCards', JSON.stringify(savedCards));
+  }
+
   goCreationMode = () => {
     this.setState({ creationMode: true, playMode: false });
   }

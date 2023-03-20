@@ -73,18 +73,16 @@ class CardPlaying extends React.Component {
           >
             {cardRare}
           </button>
-        </div>
 
-        {cardTrunfo
+          {cardTrunfo
         && (
-          <button
-            type="button"
+          <div
             className="card-trunfo"
             value="Trunfo"
-            onClick={ (target) => handleChoice('Super Trunfo', target) }
           >
             Super Trunfo
-          </button>)}
+          </div>)}
+        </div>
       </div>
     );
   }

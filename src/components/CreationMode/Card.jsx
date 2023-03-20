@@ -50,7 +50,7 @@ class Card extends React.Component {
           {cardRare}
         </div>
 
-        {cardTrunfo && <div>Super Trunfo</div>}
+        {cardTrunfo && <div className="card-trunfo">Super Trunfo</div>}
       </div>
     );
   }

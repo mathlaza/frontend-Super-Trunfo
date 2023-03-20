@@ -18,46 +18,67 @@ class Play extends Component {
     };
   }
 
+  moveCardToLast = (array, fromIndex, toIndex) => {
+    const element = array.splice(fromIndex, 1)[0];
+    array.splice(toIndex, 0, element);
+    return array;
+  };
+
+  handleChoice = (valor, target) => {
+    const { deckPlayer1, deckPlayer2 } = this.state;
+    const attrChosen = target.target.value;
+    const lastIndex1 = deckPlayer1.length - 1;
+    const lastIndex2 = deckPlayer2.length - 1;
+
+    if (attrChosen === 'Raridade') {
+      return this.handleRarity(valor);
+    }
+    const isTrunfo = target.target.parentNode.lastChild.className;
+
+    if (Number(valor) > Number(deckPlayer2[0][attrChosen])) {
+      deckPlayer1.push(deckPlayer2[0]);
+      deckPlayer2.shift();
+
+      if (isTrunfo === 'card-trunfo' && deckPlayer2.length >= 1) {
+        deckPlayer1.push(deckPlayer2[0]);
+        deckPlayer2.shift();
+      }
+
+      this.setState({
+        deckPlayer1: this.moveCardToLast(deckPlayer1, 0, lastIndex1 + 1),
+        deckPlayer2,
+      });
+      return console.log(valor, 'É MAIOR');
+    }
+
+    if (Number(valor) < Number(deckPlayer2[0][attrChosen])) {
+      deckPlayer2.push(deckPlayer1[0]);
+      deckPlayer1.shift();
+
+      this.setState({
+        deckPlayer1,
+        deckPlayer2: this.moveCardToLast(deckPlayer2, 0, lastIndex2 + 1),
+      });
+      return console.log(valor, 'É MENOR');
+    }
+
+    // Se empatar, move os cards para posições aleatórias para que não caiam juntos novamente
+    const shuffleCardTied = (index) => Math.ceil(Math.random() * (index));
+    this.setState({
+      deckPlayer1: this.moveCardToLast(deckPlayer1, 0, shuffleCardTied(lastIndex1)),
+      deckPlayer2: this.moveCardToLast(deckPlayer2, 0, shuffleCardTied(lastIndex2)),
+    });
+    return console.log('é igual');
+  };
+
+  handleRarity = (rarity) => {
+    console.log(rarity);
+  }
+
   render() {
     const {
       savedCards,
     } = this.props;
-
-    const moveCardToLast = (array, fromIndex, toIndex) => {
-      const element = array.splice(fromIndex, 1)[0];
-      array.splice(toIndex, 0, element);
-      return array;
-    };
-
-    const handleChoice = (valor, target) => {
-      const { deckPlayer1, deckPlayer2 } = this.state;
-      const attrChosen = target.target.value;
-      const lastIndex = deckPlayer1.length - 1;
-
-      if (Number(valor) > Number(deckPlayer2[0][attrChosen])) {
-        deckPlayer1.push(deckPlayer2[0]);
-        deckPlayer2.shift();
-
-        this.setState({
-          deckPlayer1: moveCardToLast(deckPlayer1, 0, lastIndex),
-          deckPlayer2,
-        });
-        console.log('DECK 1', deckPlayer1);
-        return console.log(valor, 'É MAIOR');
-      }
-      if (Number(valor) < Number(deckPlayer2[0][attrChosen])) {
-        deckPlayer2.push(deckPlayer1[0]);
-        deckPlayer1.shift();
-
-        this.setState({
-          deckPlayer1,
-          deckPlayer2: moveCardToLast(deckPlayer2, 0, lastIndex),
-        });
-        console.log('DECK 2', deckPlayer2);
-        return console.log(valor, 'É MENOR');
-      }
-      console.log('é igual');
-    };
 
     const {
       cardsShuffled,
@@ -115,7 +136,7 @@ class Play extends Component {
                 && (
                   <CardPlaying
                     allState={ playerDeckMount(deckPlayer1, 0)[0] }
-                    handleChoice={ handleChoice }
+                    handleChoice={ this.handleChoice }
                   />
                 )}
               </div>

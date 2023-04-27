@@ -15,6 +15,7 @@ class Play extends Component {
       cardsShuffled: savedCards.sort(() => Math.random() - shuffleParam),
       deckPlayer1: cardsShuffled.slice(0, midIndexOfCardsShuffled), // Pega a primeira metade do baralho
       deckPlayer2: cardsShuffled.slice(midIndexOfCardsShuffled, cardsShuffled.length), // Pega a segunda metade do baralho
+      playerWin: false,
     };
   }
 
@@ -29,13 +30,17 @@ class Play extends Component {
     const attrChosen = target.target.value;
     const lastIndex1 = deckPlayer1.length - 1;
     const lastIndex2 = deckPlayer2.length - 1;
+    // const valorAtual = attrChosen === 'Raridade' ? this.handleRarity(valor) : valor;
+    let rarity;
 
     if (attrChosen === 'Raridade') {
-      return this.handleRarity(valor);
+      const enemyValor = deckPlayer2[0][attrChosen];
+      rarity = this.handleRarity(valor, enemyValor);
     }
+
     const isTrunfo = target.target.parentNode.lastChild.className;
 
-    if (Number(valor) > Number(deckPlayer2[0][attrChosen])) {
+    if (Number(valor) > Number(deckPlayer2[0][attrChosen]) || rarity === 'better') {
       deckPlayer1.push(deckPlayer2[0]);
       deckPlayer2.shift();
 
@@ -51,7 +56,7 @@ class Play extends Component {
       return console.log(valor, 'É MAIOR');
     }
 
-    if (Number(valor) < Number(deckPlayer2[0][attrChosen])) {
+    if (Number(valor) < Number(deckPlayer2[0][attrChosen]) || rarity === 'worse') {
       deckPlayer2.push(deckPlayer1[0]);
       deckPlayer1.shift();
 
@@ -71,8 +76,12 @@ class Play extends Component {
     return console.log('é igual');
   };
 
-  handleRarity = (rarity) => {
-    console.log(rarity);
+  handleRarity = (valor, enemyValor) => {
+    if (valor === 'muito raro' && enemyValor === 'raro') return 'better';
+    if (valor === 'muito raro' && enemyValor === 'normal') return 'better';
+    if (valor === 'raro' && enemyValor === 'normal') return 'better';
+    if (valor === enemyValor) return 'equal';
+    return 'worse';
   }
 
   render() {
@@ -84,6 +93,7 @@ class Play extends Component {
       cardsShuffled,
       deckPlayer1,
       deckPlayer2,
+      playerWin,
     } = this.state;
 
     const playerDeckMount = (playerNumber, index) => [playerNumber[index]].map((card) => {
@@ -116,12 +126,14 @@ class Play extends Component {
           <div>
             {deckPlayer1.length}
             {' '}
-            {deckPlayer1.length <= 1 ? <span>Carta</span> : <span>Cartas Player 1</span>}
+            {deckPlayer1.length <= 1
+              ? <span>Carta Player 1</span> : <span>Cartas Player 1</span>}
           </div>
           <div>
             {deckPlayer2.length}
             {' '}
-            {deckPlayer2.length <= 1 ? <span>Carta</span> : <span>Cartas Player 2</span>}
+            {deckPlayer2.length <= 1
+              ? <span> Carta Player 2</span> : <span>Cartas Player 2</span>}
           </div>
         </section>
 
@@ -132,23 +144,23 @@ class Play extends Component {
             <section>
               <h3>Player 1</h3>
               <div>
-                {deckPlayer1.length > 0
-                && (
-                  <CardPlaying
-                    allState={ playerDeckMount(deckPlayer1, 0)[0] }
-                    handleChoice={ this.handleChoice }
-                  />
-                )}
+                {(deckPlayer1.length > 0 && !playerWin)
+                  && (
+                    <CardPlaying
+                      allState={ playerDeckMount(deckPlayer1, 0)[0] }
+                      handleChoice={ this.handleChoice }
+                    />
+                  )}
               </div>
 
               <h3>Player 2</h3>
               <div>
-                {deckPlayer2.length > 0
-                && (
-                  <Card
-                    allState={ playerDeckMount(deckPlayer2, 0)[0] }
-                  />
-                )}
+                {(deckPlayer2.length > 0 && !playerWin)
+                  && (
+                    <Card
+                      allState={ playerDeckMount(deckPlayer2, 0)[0] }
+                    />
+                  )}
               </div>
             </section>)}
       </section>

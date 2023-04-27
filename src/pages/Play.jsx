@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CardPlaying from '../components/PlayMode/CardPlaying';
 import Card from '../components/CreationMode/Card';
+import WinMatch from '../components/PlayMode/WinMatch';
 
 class Play extends Component {
   constructor({ savedCards }) {
@@ -15,7 +16,7 @@ class Play extends Component {
       cardsShuffled: savedCards.sort(() => Math.random() - shuffleParam),
       deckPlayer1: cardsShuffled.slice(0, midIndexOfCardsShuffled), // Pega a primeira metade do baralho
       deckPlayer2: cardsShuffled.slice(midIndexOfCardsShuffled, cardsShuffled.length), // Pega a segunda metade do baralho
-      playerWin: false,
+      // playerWin: this.deckPlayer1.length === 0 || this.deckPlayer2.length === 0,
     };
   }
 
@@ -30,8 +31,9 @@ class Play extends Component {
     const attrChosen = target.target.value;
     const lastIndex1 = deckPlayer1.length - 1;
     const lastIndex2 = deckPlayer2.length - 1;
-    // const valorAtual = attrChosen === 'Raridade' ? this.handleRarity(valor) : valor;
     let rarity;
+
+    console.log('comeco', deckPlayer1.length, deckPlayer2.length);
 
     if (attrChosen === 'Raridade') {
       const enemyValor = deckPlayer2[0][attrChosen];
@@ -53,7 +55,7 @@ class Play extends Component {
         deckPlayer1: this.moveCardToLast(deckPlayer1, 0, lastIndex1 + 1),
         deckPlayer2,
       });
-      return console.log(valor, 'É MAIOR');
+      console.log('dentro1', deckPlayer2.length);
     }
 
     if (Number(valor) < Number(deckPlayer2[0][attrChosen]) || rarity === 'worse') {
@@ -64,7 +66,7 @@ class Play extends Component {
         deckPlayer1,
         deckPlayer2: this.moveCardToLast(deckPlayer2, 0, lastIndex2 + 1),
       });
-      return console.log(valor, 'É MENOR');
+      if (deckPlayer1.length === 0) return;
     }
 
     // Se empatar, move os cards para posições aleatórias para que não caiam juntos novamente
@@ -73,7 +75,6 @@ class Play extends Component {
       deckPlayer1: this.moveCardToLast(deckPlayer1, 0, shuffleCardTied(lastIndex1)),
       deckPlayer2: this.moveCardToLast(deckPlayer2, 0, shuffleCardTied(lastIndex2)),
     });
-    return console.log('é igual');
   };
 
   handleRarity = (valor, enemyValor) => {
@@ -93,7 +94,6 @@ class Play extends Component {
       cardsShuffled,
       deckPlayer1,
       deckPlayer2,
-      playerWin,
     } = this.state;
 
     const playerDeckMount = (playerNumber, index) => [playerNumber[index]].map((card) => {
@@ -139,12 +139,12 @@ class Play extends Component {
 
         <h1>Meu Baralho</h1>
 
-        {cardsShuffled.length >= 2 // Se eu tenho um baralho para jogar em dois
-          && (
+        {(cardsShuffled.length >= 2 && deckPlayer1.length > 0 && deckPlayer2.length > 0) // Se eu tenho um baralho para jogar em dois
+          ? (
             <section>
               <h3>Player 1</h3>
               <div>
-                {(deckPlayer1.length > 0 && !playerWin)
+                {deckPlayer1.length > 0
                   && (
                     <CardPlaying
                       allState={ playerDeckMount(deckPlayer1, 0)[0] }
@@ -155,14 +155,19 @@ class Play extends Component {
 
               <h3>Player 2</h3>
               <div>
-                {(deckPlayer2.length > 0 && !playerWin)
+                {deckPlayer2.length > 0
                   && (
                     <Card
                       allState={ playerDeckMount(deckPlayer2, 0)[0] }
                     />
                   )}
               </div>
-            </section>)}
+            </section>)
+          : (
+            <WinMatch
+              deckPlayer1={ deckPlayer1 }
+              deckPlayer2={ deckPlayer2 }
+            />)}
       </section>
     );
   }

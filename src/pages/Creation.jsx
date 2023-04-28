@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Form from '../components/CreationMode/Form';
 import Card from '../components/CreationMode/Card';
@@ -93,6 +94,9 @@ class Creation extends Component {
       const { savedCards, hasTrunfo } = this.state;
       localStorage.setItem('savedCards', JSON.stringify(savedCards));
       localStorage.setItem('hasTrunfo', JSON.stringify(hasTrunfo));
+
+      const { enablePlayMode } = this.props;
+      enablePlayMode();
     });
   }
 
@@ -110,6 +114,8 @@ class Creation extends Component {
         localStorage.setItem('hasTrunfo', JSON.stringify(hasTrunfo));
       });
     }
+    const { enablePlayMode } = this.props;
+    enablePlayMode();
   }
 
   handleImage = ({ target }) => {
@@ -150,6 +156,7 @@ class Creation extends Component {
 
         <Card
           allState={ this.state }
+          playing={ false }
         />
 
         {isSaveButtonDisabled && <span id="invalid_field">Preencha Corretamente!</span>}
@@ -159,6 +166,10 @@ class Creation extends Component {
           findTrunfo={ findTrunfo }
         />
 
+        <div>
+          {`Cards criados: ${JSON.parse(localStorage.getItem('savedCards')).length}`}
+        </div>
+
         <Collection
           cardsFiltered={ cardsFiltered }
           handleDelete={ this.handleDelete }
@@ -167,5 +178,9 @@ class Creation extends Component {
     );
   }
 }
+
+Creation.propTypes = {
+  enablePlayMode: PropTypes.func.isRequired,
+};
 
 export default Creation;

@@ -6,6 +6,7 @@ class NavBar extends Component {
     const {
       goCreationMode,
       goPlayMode,
+      buttonPlayEnable,
     } = this.props;
 
     return (
@@ -20,9 +21,12 @@ class NavBar extends Component {
         <button
           type="button"
           onClick={ goPlayMode }
+          disabled={ !buttonPlayEnable }
         >
           Play
         </button>
+
+        {!buttonPlayEnable && <div>Crie pelo menos 4 cards!</div>}
       </section>
     );
   }
@@ -31,6 +35,7 @@ class NavBar extends Component {
 NavBar.propTypes = {
   goCreationMode: PropTypes.func.isRequired,
   goPlayMode: PropTypes.func.isRequired,
+  buttonPlayEnable: PropTypes.bool.isRequired,
 };
 
 export default NavBar;

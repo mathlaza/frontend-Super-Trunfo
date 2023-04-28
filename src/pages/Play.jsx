@@ -16,7 +16,6 @@ class Play extends Component {
       cardsShuffled: savedCards.sort(() => Math.random() - shuffleParam),
       deckPlayer1: cardsShuffled.slice(0, midIndexOfCardsShuffled), // Pega a primeira metade do baralho
       deckPlayer2: cardsShuffled.slice(midIndexOfCardsShuffled, cardsShuffled.length), // Pega a segunda metade do baralho
-      // playerWin: this.deckPlayer1.length === 0 || this.deckPlayer2.length === 0,
     };
   }
 
@@ -32,8 +31,6 @@ class Play extends Component {
     const lastIndex1 = deckPlayer1.length - 1;
     const lastIndex2 = deckPlayer2.length - 1;
     let rarity;
-
-    console.log('comeco', deckPlayer1.length, deckPlayer2.length);
 
     if (attrChosen === 'Raridade') {
       const enemyValor = deckPlayer2[0][attrChosen];

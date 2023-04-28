@@ -11,6 +11,7 @@ class App extends React.Component {
       savedCards: JSON.parse(localStorage.getItem('savedCards')) || [],
       creationMode: true,
       playMode: false,
+      buttonPlayEnable: false,
     };
   }
 
@@ -29,11 +30,18 @@ class App extends React.Component {
     });
   }
 
+  enablePlayMode = () => {
+    const deckSize = JSON.parse(localStorage.getItem('savedCards')).length;
+    const minCardAmount = 4;
+    this.setState({ buttonPlayEnable: deckSize >= minCardAmount });
+  }
+
   render() {
     const {
       savedCards,
       creationMode,
       playMode,
+      buttonPlayEnable,
     } = this.state;
 
     return (
@@ -41,11 +49,12 @@ class App extends React.Component {
         <NavBar
           goCreationMode={ this.goCreationMode }
           goPlayMode={ this.goPlayMode }
+          buttonPlayEnable={ buttonPlayEnable }
         />
 
         {creationMode
           && (
-            <Creation />
+            <Creation enablePlayMode={ this.enablePlayMode } />
           )}
 
         {playMode

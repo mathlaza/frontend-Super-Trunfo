@@ -159,12 +159,13 @@ class Play extends Component {
                   && (
                     <Card
                       allState={ playerDeckMount(deckPlayer2, 0)[0] }
+                      playing
                     />
                   )}
               </div>
             </section>)
-          : (
-            <WinMatch
+          : (cardsShuffled.length >= 2
+            && <WinMatch
               deckPlayer1={ deckPlayer1 }
               deckPlayer2={ deckPlayer2 }
             />)}

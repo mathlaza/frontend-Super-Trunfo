@@ -5,6 +5,7 @@ class Card extends React.Component {
   render() {
     const {
       allState,
+      playing,
     } = this.props;
 
     const {
@@ -19,7 +20,7 @@ class Card extends React.Component {
     } = allState;
 
     return (
-      <div>
+      <section>
         <div>
           {cardName}
         </div>
@@ -34,30 +35,35 @@ class Card extends React.Component {
           {cardDescription}
         </div>
 
-        <div>
-          {cardAttr1}
-        </div>
+        {!playing
+        && (
+          <section>
+            <div>
+              {cardAttr1}
+            </div>
 
-        <div>
-          {cardAttr2}
-        </div>
+            <div>
+              {cardAttr2}
+            </div>
 
-        <div>
-          {cardAttr3}
-        </div>
+            <div>
+              {cardAttr3}
+            </div>
 
-        <div>
-          {cardRare}
-        </div>
+            <div>
+              {cardRare}
+            </div>
 
-        {cardTrunfo && <div className="card-trunfo">Super Trunfo</div>}
-      </div>
+            {cardTrunfo && <div className="card-trunfo">Super Trunfo</div>}
+          </section>)}
+      </section>
     );
   }
 }
 
 Card.defaultProps = {
   allState: PropTypes.func,
+  playing: PropTypes.bool,
 };
 
 Card.propTypes = {
@@ -71,6 +77,7 @@ Card.propTypes = {
     cardRare: PropTypes.string.isRequired,
     cardTrunfo: PropTypes.bool.isRequired,
   }),
+  playing: PropTypes.bool,
 };
 
 export default Card;

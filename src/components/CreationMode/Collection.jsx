@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
 
-class Collection extends Component {
+class Collection extends React.Component {
   render() {
     const {
       cardsFiltered,
@@ -27,6 +27,7 @@ class Collection extends Component {
             <div key={ index }>
               <Card
                 allState={ allState }
+                playing={ false }
               />
 
               <button

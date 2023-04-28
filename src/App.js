@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './components/NavBar';
 import Play from './pages/Play';
 import Creation from './pages/Creation';
+import Instructions from './pages/Instructions';
 
 class App extends React.Component {
   constructor() {
@@ -12,21 +13,23 @@ class App extends React.Component {
       creationMode: true,
       playMode: false,
       buttonPlayEnable: false,
+      instructionMode: false,
     };
   }
 
   componentDidMount() {
     const { savedCards } = this.state;
     localStorage.setItem('savedCards', JSON.stringify(savedCards));
+    this.enablePlayMode();
   }
 
   goCreationMode = () => {
-    this.setState({ creationMode: true, playMode: false });
+    this.setState({ creationMode: true, playMode: false, instructionMode: false });
   }
 
   goPlayMode = () => {
     this.setState({ savedCards: JSON.parse(localStorage.getItem('savedCards')) }, () => {
-      this.setState({ playMode: true, creationMode: false });
+      this.setState({ playMode: true, creationMode: false, instructionMode: false });
     });
   }
 
@@ -36,12 +39,17 @@ class App extends React.Component {
     this.setState({ buttonPlayEnable: deckSize >= minCardAmount });
   }
 
+  goInstructionMode = () => {
+    this.setState({ instructionMode: true, creationMode: false, playMode: false });
+  }
+
   render() {
     const {
       savedCards,
       creationMode,
       playMode,
       buttonPlayEnable,
+      instructionMode,
     } = this.state;
 
     return (
@@ -50,6 +58,7 @@ class App extends React.Component {
           goCreationMode={ this.goCreationMode }
           goPlayMode={ this.goPlayMode }
           buttonPlayEnable={ buttonPlayEnable }
+          goInstructionMode={ this.goInstructionMode }
         />
 
         {creationMode
@@ -59,6 +68,9 @@ class App extends React.Component {
 
         {playMode
           && <Play savedCards={ savedCards } />}
+
+        {instructionMode
+          && <Instructions />}
       </main>
     );
   }

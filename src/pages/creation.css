@@ -25,12 +25,14 @@
   display: flex;
   flex: 0.5;
   flex-direction: column;
+  align-items: center;
   width: 400px;
   height: 600px;
   background-color: #617667;
   color: hwb(48 93% 5%);
   border-bottom: solid 2px #325b3b;
   border-left: solid 1px #325b3b;
+  font-size: large;
 }
 
 #invalid_field {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './card.css';
 
 class Card extends React.Component {
   render() {
@@ -20,41 +21,44 @@ class Card extends React.Component {
     } = allState;
 
     return (
-      <section>
-        <div>
+      <section className="cardMounted">
+        <div className="cardName">
           {cardName}
         </div>
         {cardImage
           && <img
             src={ cardImage }
             alt={ cardName }
-            style={ { width: '200px' } }
+            style={ { width: '220px', paddingBottom: '7px' } }
           />}
 
-        <div>
+        <div className="cardDescription">
           {cardDescription}
         </div>
 
         {!playing
         && (
           <section>
-            <div>
-              {cardAttr1}
+            <div className="attrBox">
+              <span>Attr1</span>
+              <span>{cardAttr1}</span>
             </div>
 
-            <div>
-              {cardAttr2}
+            <div className="attrBox">
+              <span>Attr2</span>
+              <span>{cardAttr2}</span>
             </div>
 
-            <div>
-              {cardAttr3}
+            <div className="attrBox">
+              <span>Attr3</span>
+              <span>{cardAttr3}</span>
             </div>
 
-            <div>
+            <div className="cardFooter">
               {cardRare}
+              {cardTrunfo && <div className="card-trunfo">Super Trunfo</div>}
             </div>
 
-            {cardTrunfo && <div className="card-trunfo">Super Trunfo</div>}
           </section>)}
       </section>
     );

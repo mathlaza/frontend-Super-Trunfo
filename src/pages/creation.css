@@ -1,5 +1,5 @@
 .creationBackground {
-  background: hwb(0 92% 4%);
+  background: hwb(48 93% 5%);
 }
 
 .formsVisual {
@@ -17,6 +17,8 @@
   justify-content: center;
   width: 400px;
   height: 600px;
+  border-bottom: solid 2px #325b3b;
+  border-right: solid 1px #325b3b;
 }
 
 .visual {
@@ -26,5 +28,23 @@
   width: 400px;
   height: 600px;
   background-color: #617667;
-  color: #FFFFFF;
+  color: hwb(48 93% 5%);
+  border-bottom: solid 2px #325b3b;
+  border-left: solid 1px #325b3b;
+}
+
+#invalid_field {
+  color: rgb(231, 78, 78);
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 28px;
+}
+
+#valid_field {
+  color: hwb(48 93% 5%);
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 28px;
 }

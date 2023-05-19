@@ -21,15 +21,18 @@ class NavBar extends Component {
           Create
         </button>
 
-        <button
-          className="navButton"
-          type="button"
-          onClick={ goPlayMode }
-          disabled={ !buttonPlayEnable }
-        >
-          Play
-        </button>
-        {!buttonPlayEnable && <span>Crie pelo menos 4 cards!</span>}
+        <div>
+          <button
+            className="navButton"
+            type="button"
+            onClick={ goPlayMode }
+            disabled={ !buttonPlayEnable }
+          >
+            Play
+          </button>
+          {!buttonPlayEnable
+          && <span className="playRestriction">Crie pelo menos 4 cards!</span>}
+        </div>
 
         <button
           className="navButton"

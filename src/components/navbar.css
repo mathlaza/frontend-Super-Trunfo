@@ -8,8 +8,38 @@
   background-color: #325b3b;
 }
 
-.navButton {
-  height: 30px;
-  border: solid 3px hwb(0 49% 28%);
-  border-radius: 5px;
+.navButton:hover {
+  box-shadow: 0 0 10px #98cea8;
+}
+
+.navButton:enabled {
+  height: 35px;
+  padding: 0 10px 0 10px;
+  border: 0px;
+  border-radius: 4px;
+  background-color: rgb(89, 4, 89);
+  color: hwb(48 93% 5%);
+  cursor: pointer;
+}
+
+.navButton:enabled:active {
+  background-color: rgb(114, 39, 114);
+  transform: translateY(4px);
+}
+
+.navButton:disabled {
+  height: 35px;
+  padding: 0 10px 0 10px;
+  border: 0px;
+  border-radius: 4px;
+  background-color: rgb(101, 58, 101);
+  color: hwb(48 93% 5%);
+  cursor: not-allowed;
+}
+
+.playRestriction {
+  padding-left: 10px;
+  color: rgb(232, 217, 217);
+  font-size: 17px;
+  font-weight: 600;
 }

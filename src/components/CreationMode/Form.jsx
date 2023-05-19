@@ -27,8 +27,8 @@ class Form extends React.Component {
           handleImage={ handleImage }
         />
 
-        <label htmlFor="Rarity">
-          Rarity
+        <label className="rarityBox" htmlFor="Rarity">
+          <span>Rarity</span>
           <select
             value={ cardRare }
             onChange={ handleChange }
@@ -43,8 +43,8 @@ class Form extends React.Component {
 
         {!hasTrunfo
           ? (
-            <label htmlFor="Trunfo">
-              Super Trunfo
+            <label className="trunfoBox" htmlFor="Trunfo">
+              <span>Super Trunfo</span>
               <input
                 type="checkbox"
                 checked={ cardTrunfo }
@@ -53,9 +53,10 @@ class Form extends React.Component {
               />
             </label>
           )
-          : <p>Você já tem um Super Trunfo em seu baralho</p>}
+          : <p id="hasTrunfo">Você já tem um Super Trunfo em seu baralho</p>}
 
         <button
+          className="saveButton"
           type="submit"
           disabled={ isSaveButtonDisabled }
           onClick={ handleSave }

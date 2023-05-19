@@ -156,7 +156,9 @@ class Creation extends Component {
               handleSave={ this.handleSave }
               handleImage={ this.handleImage }
             />
-            {isSaveButtonDisabled && <p id="invalid_field">Preencha Corretamente!</p>}
+            {isSaveButtonDisabled
+              ? <p id="invalid_field">Preencha Corretamente!</p>
+              : <p id="valid_field">Campos Preenchidos</p>}
           </div>
 
           <div className="visual">

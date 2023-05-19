@@ -12,8 +12,8 @@ align-items: center;
 
 .attrSpan {
   padding-right: 15px;
-  color: purple;
-  font-size: small;
+  color: rgb(89, 4, 89);
+  font-size: medium;
   font-weight: 700;
 }
 
@@ -25,14 +25,18 @@ align-items: center;
 
 .inputName>span {
   padding-bottom: 10px;
-  color: purple;
+  color: rgb(89, 4, 89);
   font-size: medium;
   font-weight: 700;
 }
 
 .inputName>input {
   border: 0;
-  border-bottom: solid 1px red;
+  border-bottom: solid 2px rgb(89, 4, 89);
+  border-radius: 2px;
+  font-size: large;
+  color: #101e13;
+  font-weight: 600;
 }
 
 label>input {
@@ -40,8 +44,144 @@ label>input {
   width: 350px;
   background: #ffffff;
   height: 25px;
+  border: solid 2px rgb(89, 4, 89);
+  border-radius: 2px;
+  color: rgb(89, 4, 89);
+  font-size: large;
+  color: #101e13;
+  font-weight: 600;
+}
+
+.textArea {
+  resize: none;
+  border: 0;
+  border-bottom: solid 2px rgb(89, 4, 89);
+  border-radius: 2px;
+  font-size: large;
+  color: #101e13;
+  font-weight: 600;
 }
 
 .attrInput {
-  width: 300px;
+  width: 292px;
+  font-size: medium;
+}
+
+.inputMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonUpload {
+  font-size: medium;
+  color: hwb(48 93% 5%);
+  background-color: #617667;
+  width: 100px;
+  height: 7px;
+  text-align: center;
+  border: solid 2px #325b3b;
+  border-radius: 4px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+
+.buttonUpload:hover {
+  box-shadow: 0 0 10px #617667;
+  color: hwb(0 100% 0%);
+}
+
+.buttonUpload:active {
+  background-color: #509a60;
+  box-shadow: rgba(255, 255, 255, 0.1);
+  transform: translateY(4px);
+}
+
+.buttonUpload>span {
+  padding-bottom: 4px;
+}
+
+.rarityBox {
+  margin-top: 7px;
+}
+
+.rarityBox>span {
+  padding-right: 10px;
+  color: rgb(89, 4, 89);
+  font-size: medium;
+  font-weight: 700;
+}
+
+.rarityBox>select {
+  border: solid 2px rgb(89, 4, 89);
+  border-radius: 2px;
+  color: #101e13;
+  font-size: medium;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rarityBox>select>option {
+  font-weight: 600;
+  color: #101e13;
+}
+
+.trunfoBox {
+  display: flex;
+  padding: 0;
+  padding-bottom: 10px;
+  color: rgb(89, 4, 89);
+  font-size: medium;
+  font-weight: 700;
+}
+
+.trunfoBox>input {
+  width: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+#hasTrunfo {
+  color: rgb(231, 78, 78);
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.saveButton {
+  font-size: medium;
+  color: hwb(48 93% 5%);
+  background-color: #617667;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  border: solid 2px #325b3b;
+  border-radius: 4px;
+}
+
+.saveButton:hover {
+  box-shadow: 0 0 10px #617667;
+  color: hwb(0 100% 0%);
+}
+
+.saveButton:enabled:hover {
+  cursor: pointer;
+}
+
+.saveButton:enabled:active {
+  background-color: #509a60;
+  box-shadow: rgba(255, 255, 255, 0.1);
+  transform: translateY(4px);
+}
+
+.saveButton:disabled {
+  font-size: medium;
+  color: hwb(48 93% 5%);
+  background-color: #b3c3b8;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  border: solid 2px #325b3b;
+  border-radius: 4px;
+  cursor: not-allowed;
 }

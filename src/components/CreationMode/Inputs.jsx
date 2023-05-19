@@ -32,8 +32,11 @@ class Inputs extends React.Component {
 
         <label className="inputName" htmlFor="Description">
           <span>Description</span>
-          <input
+          <textarea
+            className="textArea"
             type="textarea"
+            rows={ 3 }
+            cols={ 38 }
             value={ cardDescription }
             onChange={ handleChange }
             name="cardDescription"
@@ -73,14 +76,15 @@ class Inputs extends React.Component {
           />
         </label>
 
-        <label htmlFor="img_input">
-          Image
+        <label className="buttonUpload" htmlFor="img_input">
+          <span>Card Image</span>
           <input
             id="img_input"
             type="file"
             accept="image/jpg, image/jpeg, image/png, image/gif"
             onChange={ handleImage }
             name="cardImage"
+            style={ { display: 'none' } }
           />
         </label>
       </main>

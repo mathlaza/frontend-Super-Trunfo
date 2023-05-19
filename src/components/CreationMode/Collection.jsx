@@ -10,7 +10,7 @@ class Collection extends React.Component {
     } = this.props;
 
     return (
-      <div className="cardSaved">
+      <div className="cardsSaved">
         {cardsFiltered.map((card, index) => {
           const allState = {
             cardName: card.Nome,
@@ -24,13 +24,14 @@ class Collection extends React.Component {
           };
 
           return (
-            <div key={ index }>
+            <div className="cardSaved" key={ index }>
               <Card
                 allState={ allState }
                 playing={ false }
               />
 
               <button
+                className="deleteBtn"
                 name={ card.Nome }
                 type="button"
                 onClick={ handleDelete }

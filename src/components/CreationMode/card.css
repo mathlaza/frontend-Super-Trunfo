@@ -4,11 +4,11 @@
   border: solid 5px hwb(48 93% 5%);
   border-radius: 12px;
   width: 270px;
+  height: 450px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   color: hwb(48 93% 5%);
 }
 
@@ -53,4 +53,41 @@
   align-items: center;
   padding: 0;
   margin: 0;
+}
+
+.deleteBtn {
+  font-size: medium;
+  color: hwb(48 93% 5%);
+  background-color: #617667;
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  border: solid 2px #325b3b;
+  border-radius: 4px;
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  box-shadow: 0 0 10px #617667;
+  color: hwb(0 100% 0%);
+}
+
+.deleteBtn:active {
+  background-color: #509a60;
+  box-shadow: rgba(255, 255, 255, 0.1);
+  transform: translateY(4px);
+}
+
+.cardsSaved {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.cardSaved {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

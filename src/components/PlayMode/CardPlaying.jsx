@@ -28,7 +28,7 @@ class CardPlaying extends React.Component {
           && <img
             src={ cardImage }
             alt={ cardName }
-            style={ { width: '200px' } }
+            style={ { width: '220px', height: '250px', paddingBottom: '7px' } }
           />}
 
         <div>

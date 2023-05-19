@@ -29,7 +29,7 @@ class Card extends React.Component {
           && <img
             src={ cardImage }
             alt={ cardName }
-            style={ { width: '220px', paddingBottom: '7px' } }
+            style={ { width: '220px', height: '250px', paddingBottom: '7px' } }
           />}
 
         <div className="cardDescription">

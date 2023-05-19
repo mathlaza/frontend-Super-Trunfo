@@ -1,0 +1,30 @@
+.creationBackground {
+  background: hwb(0 92% 4%);
+}
+
+.formsVisual {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.forms {
+  display: flex;
+  flex: 0.5;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  height: 600px;
+}
+
+.visual {
+  display: flex;
+  flex: 0.5;
+  flex-direction: column;
+  width: 400px;
+  height: 600px;
+  background-color: #617667;
+  color: #FFFFFF;
+}

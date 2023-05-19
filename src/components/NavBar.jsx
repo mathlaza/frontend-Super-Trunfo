@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './navbar.css';
 
 class NavBar extends Component {
   render() {
@@ -11,8 +12,9 @@ class NavBar extends Component {
     } = this.props;
 
     return (
-      <section>
+      <section className="navBar">
         <button
+          className="navButton"
           type="button"
           onClick={ goCreationMode }
         >
@@ -20,6 +22,7 @@ class NavBar extends Component {
         </button>
 
         <button
+          className="navButton"
           type="button"
           onClick={ goPlayMode }
           disabled={ !buttonPlayEnable }
@@ -29,6 +32,7 @@ class NavBar extends Component {
         {!buttonPlayEnable && <span>Crie pelo menos 4 cards!</span>}
 
         <button
+          className="navButton"
           type="button"
           onClick={ goInstructionMode }
         >

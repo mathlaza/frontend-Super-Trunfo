@@ -20,6 +20,7 @@ class Form extends React.Component {
 
     return (
       <form>
+        <h1>Adicionar nova carta</h1>
         <Inputs
           allState={ allState }
           handleChange={ handleChange }

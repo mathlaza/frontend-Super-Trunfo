@@ -5,6 +5,7 @@ import Card from '../components/CreationMode/Card';
 import Filters from '../components/CreationMode/Filters';
 import Collection from '../components/CreationMode/Collection';
 import { fieldValidations, imageValidation } from '../Validations';
+import './creation.css';
 
 class Creation extends Component {
   constructor() {
@@ -145,21 +146,27 @@ class Creation extends Component {
           (findRare === 'todas' || !findRare) ? Raridade : Raridade === findRare)));
 
     return (
-      <section>
-        <Form
-          allState={ this.state }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          handleChange={ this.handleChange }
-          handleSave={ this.handleSave }
-          handleImage={ this.handleImage }
-        />
+      <section className="creationBackground">
+        <div className="formsVisual">
+          <div className="forms">
+            <Form
+              allState={ this.state }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              handleChange={ this.handleChange }
+              handleSave={ this.handleSave }
+              handleImage={ this.handleImage }
+            />
+            {isSaveButtonDisabled && <p id="invalid_field">Preencha Corretamente!</p>}
+          </div>
 
-        <Card
-          allState={ this.state }
-          playing={ false }
-        />
-
-        {isSaveButtonDisabled && <span id="invalid_field">Preencha Corretamente!</span>}
+          <div className="visual">
+            <p>Pré-visualização</p>
+            <Card
+              allState={ this.state }
+              playing={ false }
+            />
+          </div>
+        </div>
 
         <Filters
           handleChange={ this.handleChange }

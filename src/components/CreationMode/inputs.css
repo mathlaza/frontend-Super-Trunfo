@@ -1,0 +1,47 @@
+h1 {
+  padding-top: 30px;
+  margin: 0;
+}
+
+label {
+padding: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.attrSpan {
+  padding-right: 15px;
+  color: purple;
+  font-size: small;
+  font-weight: 700;
+}
+
+.inputName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputName>span {
+  padding-bottom: 10px;
+  color: purple;
+  font-size: medium;
+  font-weight: 700;
+}
+
+.inputName>input {
+  border: 0;
+  border-bottom: solid 1px red;
+}
+
+label>input {
+  text-align: center;
+  width: 350px;
+  background: #ffffff;
+  height: 25px;
+}
+
+.attrInput {
+  width: 300px;
+}

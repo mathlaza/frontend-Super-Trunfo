@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './inputs.css';
 
 class Inputs extends React.Component {
   render() {
@@ -18,9 +19,9 @@ class Inputs extends React.Component {
     } = allState;
 
     return (
-      <div>
-        <label htmlFor="Name">
-          Name
+      <main className="inputMain">
+        <label className="inputName" htmlFor="Name">
+          <span>Name</span>
           <input
             type="text"
             value={ cardName }
@@ -29,8 +30,8 @@ class Inputs extends React.Component {
           />
         </label>
 
-        <label htmlFor="Description">
-          Description
+        <label className="inputName" htmlFor="Description">
+          <span>Description</span>
           <input
             type="textarea"
             value={ cardDescription }
@@ -40,8 +41,9 @@ class Inputs extends React.Component {
         </label>
 
         <label htmlFor="Attr1">
-          Attr1
+          <span className="attrSpan">Attr1</span>
           <input
+            className="attrInput"
             type="number"
             value={ cardAttr1 }
             onChange={ handleChange }
@@ -50,8 +52,9 @@ class Inputs extends React.Component {
         </label>
 
         <label htmlFor="Attr2">
-          Attr2
+          <span className="attrSpan">Attr2</span>
           <input
+            className="attrInput"
             type="number"
             value={ cardAttr2 }
             onChange={ handleChange }
@@ -60,8 +63,9 @@ class Inputs extends React.Component {
         </label>
 
         <label htmlFor="Attr3">
-          Attr3
+          <span className="attrSpan">Attr3</span>
           <input
+            className="attrInput"
             type="number"
             value={ cardAttr3 }
             onChange={ handleChange }
@@ -79,7 +83,7 @@ class Inputs extends React.Component {
             name="cardImage"
           />
         </label>
-      </div>
+      </main>
     );
   }
 }

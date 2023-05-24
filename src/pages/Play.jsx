@@ -43,7 +43,7 @@ class Play extends Component {
       deckPlayer1.push(deckPlayer2[0]);
       deckPlayer2.shift();
 
-      if (isTrunfo === 'card-trunfo' && deckPlayer2.length >= 1) {
+      if (isTrunfo === 'playingTrunfoBox' && deckPlayer2.length >= 1) {
         deckPlayer1.push(deckPlayer2[0]);
         deckPlayer2.shift();
       }

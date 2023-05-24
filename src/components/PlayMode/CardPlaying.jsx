@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './cardPlaying.css';
 
 class CardPlaying extends React.Component {
   render() {
@@ -20,8 +21,8 @@ class CardPlaying extends React.Component {
     } = allState;
 
     return (
-      <div>
-        <div>
+      <div className="cardPlaying">
+        <div className="playingName">
           {cardName}
         </div>
         {cardImage
@@ -31,16 +32,17 @@ class CardPlaying extends React.Component {
             style={ { width: '220px', height: '250px', paddingBottom: '7px' } }
           />}
 
-        <div>
-          <button
+        <div className="playingCardBox">
+          <div
+            className="playingDescription"
             type="button"
           >
             {cardDescription}
-          </button>
+          </div>
 
           <button
             type="button"
-            className="card-attr1"
+            className="playingAttr"
             value="Attr1"
             onClick={ (target) => handleChoice(cardAttr1, target) }
           >
@@ -49,7 +51,7 @@ class CardPlaying extends React.Component {
 
           <button
             type="button"
-            className="card-attr2"
+            className="playingAttr"
             value="Attr2"
             onClick={ (target) => handleChoice(cardAttr2, target) }
           >
@@ -58,7 +60,7 @@ class CardPlaying extends React.Component {
 
           <button
             type="button"
-            className="card-attr3"
+            className="playingAttr"
             value="Attr3"
             onClick={ (target) => handleChoice(cardAttr3, target) }
           >
@@ -67,7 +69,7 @@ class CardPlaying extends React.Component {
 
           <button
             type="button"
-            className="card-rarity"
+            className="playingAttr"
             value="Raridade"
             onClick={ (target) => handleChoice(cardRare, target) }
           >
@@ -77,10 +79,10 @@ class CardPlaying extends React.Component {
           {cardTrunfo
         && (
           <div
-            className="card-trunfo"
+            className="playingTrunfoBox"
             value="Trunfo"
           >
-            Super Trunfo
+            <span className="playingTrunfo">Super Trunfo</span>
           </div>)}
         </div>
       </div>

@@ -38,7 +38,7 @@ class Filters extends Component {
             name="findTrunfo"
             onChange={ handleChange }
           />
-          <span>Find Super Trunfo</span>
+          <span className="findTrunfoFilter">Find Super Trunfo</span>
         </label>
       </div>
     );

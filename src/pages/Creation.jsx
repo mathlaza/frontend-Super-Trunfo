@@ -170,19 +170,21 @@ class Creation extends Component {
           </div>
         </div>
 
-        <Filters
-          handleChange={ this.handleChange }
-          findTrunfo={ findTrunfo }
-        />
+        <div className="collectionBackground">
+          <Filters
+            handleChange={ this.handleChange }
+            findTrunfo={ findTrunfo }
+          />
 
-        <div>
-          {`Cards criados: ${JSON.parse(localStorage.getItem('savedCards')).length}`}
+          <div className="cardsCriados">
+            {`Cards criados: ${JSON.parse(localStorage.getItem('savedCards')).length}`}
+          </div>
+
+          <Collection
+            cardsFiltered={ cardsFiltered }
+            handleDelete={ this.handleDelete }
+          />
         </div>
-
-        <Collection
-          cardsFiltered={ cardsFiltered }
-          handleDelete={ this.handleDelete }
-        />
       </section>
     );
   }

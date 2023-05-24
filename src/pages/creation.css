@@ -2,6 +2,12 @@
   background: hwb(48 93% 5%);
 }
 
+.collectionBackground {
+  background: hwb(40 87% 11%);
+  background: radial-gradient(80% 70% at 40% 40%, rgba(55, 78, 24, 0.712) 0%, rgba(89, 4, 89, 0.799) 100%);
+  padding-bottom: 20px;
+}
+
 .formsVisual {
   text-align: center;
   display: flex;
@@ -44,6 +50,15 @@
 }
 
 #valid_field {
+  color: hwb(48 93% 5%);
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 28px;
+}
+
+.cardsCriados {
+  text-align: center;
   color: hwb(48 93% 5%);
   font-size: 17px;
   font-weight: 600;

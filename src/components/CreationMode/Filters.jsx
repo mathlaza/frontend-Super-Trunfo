@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './filters.css';
 
 class Filters extends Component {
   render() {
@@ -9,8 +10,9 @@ class Filters extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="filterFields">
         <input
+          className="filterName"
           type="text"
           name="findName"
           placeholder="Card name"
@@ -18,6 +20,7 @@ class Filters extends Component {
           disabled={ findTrunfo }
         />
         <select
+          className="filterSelect"
           name="findRare"
           onChange={ handleChange }
           disabled={ findTrunfo }
@@ -30,11 +33,12 @@ class Filters extends Component {
         </select>
         <label htmlFor="findTrunfo">
           <input
+            className="filterCheckBox"
             type="checkbox"
             name="findTrunfo"
             onChange={ handleChange }
           />
-          Find SuperTrunfo
+          <span>Find Super Trunfo</span>
         </label>
       </div>
     );

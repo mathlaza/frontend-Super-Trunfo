@@ -130,6 +130,9 @@ label>input {
   display: flex;
   padding: 0;
   padding-bottom: 10px;
+}
+
+.trunfoBox>span {
   color: rgb(89, 4, 89);
   font-size: medium;
   font-weight: 700;
@@ -139,6 +142,34 @@ label>input {
   width: 30px;
   margin-left: 5px;
   margin-top: 5px;
+}
+
+.trunfoBox>input:hover {
+  cursor: pointer;
+}
+
+.inputName>input:focus {
+  outline: none !important;
+  border: solid 2px rgb(60, 153, 65);
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.textArea:focus {
+  outline: none !important;
+  border: solid 2px rgb(60, 153, 65);
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.attrInput:focus {
+  outline: none !important;
+  border: solid 2px rgb(60, 153, 65);
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.rarityBox>select:focus {
+  outline: none !important;
+  border: solid 2px rgb(60, 153, 65);
+  box-shadow: 0 0 10px #719ECE;
 }
 
 #hasTrunfo {

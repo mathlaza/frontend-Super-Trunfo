@@ -1,0 +1,50 @@
+.filterFields {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 600px 0 600px;
+}
+
+.filterFields>*:focus {
+  outline: none !important;
+  border: solid 2px rgb(60, 153, 65);
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.filterName {
+  border: 0;
+  border-bottom: solid 2px rgb(89, 4, 89);
+  border-radius: 2px;
+  font-size: large;
+  color: #101e13;
+  font-weight: 600;
+}
+
+.filterSelect {
+  border: solid 2px rgb(89, 4, 89);
+  border-radius: 2px;
+  color: #101e13;
+  font-size: medium;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.filterSelect>option {
+  font-weight: 600;
+  color: #101e13;
+}
+
+.filterCheckBox {
+  width: 50px;
+}
+
+.filterCheckBox:hover {
+  cursor: pointer;
+}
+
+span {
+  color: hwb(48 93% 5%);
+  font-size: medium;
+  font-weight: 600;
+}

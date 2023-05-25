@@ -177,7 +177,7 @@ class Creation extends Component {
           />
 
           <div className="cardsCriados">
-            {`Cards criados: ${JSON.parse(localStorage.getItem('savedCards')).length}`}
+            {`Cards criados: ${savedCards}`}
           </div>
 
           <Collection

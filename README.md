@@ -21,6 +21,17 @@
 
 <br>
 
+# Índice
+
+* [Sobre o projeto](#sobre-o-projeto)
+* [Tecnologias utilizadas](#tecnologias-utilizadas)
+* [Criação de cartas](#criação-de-cartas)
+* [Filtro de cartas](#filtro-de-cartas)
+* [Demonstração de partida](#demonstração-de-partida)
+* [Rodando localmente](#rodando-localmente)
+
+<br>
+
 # Sobre o projeto
 
 <div style="font-size:16px">
@@ -64,6 +75,21 @@ Essas foram as tecnologias utilizadas durante o desenvolvimento do projeto:
 * <span style="color:#58a6ff">React</span>
 * <span style="color:#58a6ff">ESLint</span>
 
+<br>
+
+# Criação de cartas
+<img src="creating.gif" alt="Logo" width="700" height="370">
+<br>
+<br>
+
+# Filtro de cartas
+<img src="filters.gif" alt="Logo" width="700" height="370">
+<br>
+<br>
+
+# Demonstração de partida
+<img src="playmode.gif" alt="Logo" width="700" height="370">
+<br>
 <br>
 
 # Rodando localmente

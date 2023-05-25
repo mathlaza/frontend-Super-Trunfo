@@ -18,6 +18,7 @@
   font-size: large;
   color: #101e13;
   font-weight: 600;
+  margin-right: 10px;
 }
 
 .filterSelect {
@@ -47,4 +48,5 @@
   color: hwb(48 93% 5%);
   font-size: medium;
   font-weight: 600;
+  width: 200px;
 }

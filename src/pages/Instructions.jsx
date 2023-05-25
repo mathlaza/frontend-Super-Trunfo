@@ -47,6 +47,9 @@ class Instructions extends React.Component {
             oponente (Player 2), você obtém o card dele;
           </div>
           <div>
+            Caso haja um empate, os cards são reembaralhados no deck dos jogadores;
+          </div>
+          <div>
             Ambos os cards em jogo que
             batalharam serão colocados ao final do deck do jogador que venceu a rodada;
           </div>

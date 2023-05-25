@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://currency-exchange-tau-ten.vercel.app/">
+  <a href="https://frontend-super-trunfo.vercel.app/">
     <img src="overall.gif" alt="Logo" width="700" height="370">
   </a>
   
@@ -14,7 +14,7 @@
 <hr>
 
 <p align="center">
-<a href="https://currency-exchange-tau-ten.vercel.app/" style="color:#66FF00; font-size:25px">
+<a href="https://frontend-super-trunfo.vercel.app/" style="color:#66FF00; font-size:25px">
     Teste o projeto! Link do deploy
   </a>
    </p>

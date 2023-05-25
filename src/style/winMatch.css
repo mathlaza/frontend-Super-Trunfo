@@ -1,0 +1,13 @@
+.winMatchArea {
+  background-color: #617667;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 1000px;
+}
+
+.winningPlayer {
+  color: hwb(48 93% 5%);
+  font-size: xx-large;
+  padding-top: 20px;
+}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CardPlaying from '../components/PlayMode/CardPlaying';
 import Card from '../components/CreationMode/Card';
 import WinMatch from '../components/PlayMode/WinMatch';
+import '../style/play.css';
 
 class Play extends Component {
   constructor({ savedCards }) {
@@ -113,52 +114,50 @@ class Play extends Component {
 
     return (
       <section>
-        <div>Play</div>
-        <section>
-          <div>
+        <section className="playHeader">
+          <div className="headerInfo">
+            <span className="headerTitles">Total: </span>
             {savedCards.length}
             {' '}
             {savedCards.length <= 1 ? <span>Carta</span> : <span>Cartas</span>}
           </div>
-          <div>
+          <div className="headerInfo">
+            <span className="headerTitles">Player1: </span>
             {deckPlayer1.length}
-            {' '}
-            {deckPlayer1.length <= 1
-              ? <span>Carta Player 1</span> : <span>Cartas Player 1</span>}
           </div>
-          <div>
+          <div className="headerInfo">
+            <span className="headerTitles">Player2: </span>
             {deckPlayer2.length}
-            {' '}
-            {deckPlayer2.length <= 1
-              ? <span> Carta Player 2</span> : <span>Cartas Player 2</span>}
           </div>
         </section>
 
-        <h1>Meu Baralho</h1>
-
         {(cardsShuffled.length >= 2 && deckPlayer1.length > 0 && deckPlayer2.length > 0) // Se eu tenho um baralho para jogar em dois
           ? (
-            <section>
-              <h3>Player 1</h3>
-              <div>
-                {deckPlayer1.length > 0
-                  && (
-                    <CardPlaying
-                      allState={ playerDeckMount(deckPlayer1, 0)[0] }
-                      handleChoice={ this.handleChoice }
-                    />
-                  )}
+            <section className="cardsPlayingArea">
+              <div className="playerArea">
+                <h3>Player 1</h3>
+                <div>
+                  {deckPlayer1.length > 0
+                    && (
+                      <CardPlaying
+                        allState={ playerDeckMount(deckPlayer1, 0)[0] }
+                        handleChoice={ this.handleChoice }
+                      />
+                    )}
+                </div>
               </div>
 
-              <h3>Player 2</h3>
-              <div>
-                {deckPlayer2.length > 0
-                  && (
-                    <Card
-                      allState={ playerDeckMount(deckPlayer2, 0)[0] }
-                      playing
-                    />
-                  )}
+              <div className="playerArea">
+                <h3>Player 2</h3>
+                <div>
+                  {deckPlayer2.length > 0
+                    && (
+                      <Card
+                        allState={ playerDeckMount(deckPlayer2, 0)[0] }
+                        playing
+                      />
+                    )}
+                </div>
               </div>
             </section>)
           : (cardsShuffled.length >= 2

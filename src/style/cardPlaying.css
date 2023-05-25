@@ -23,19 +23,21 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 180px;
   height: 150px;
+  padding-top: 10px;
 }
 
 .playingDescription {
   color: hwb(48 93% 5%);
   font-size: medium;
-  padding-bottom: 10px;
+  padding-bottom: 2px;
   text-align: center;
 }
 
 .playingTrunfoBox {
-  padding-top: 10px;
+  padding-top: 5px;
   text-align: center;
 }
 
@@ -45,6 +47,7 @@
   border-radius: 3px;
   margin: 3px;
   height: 24px;
+  width: 170px;
   background-color: hwb(48 93% 5%);
   color: #325b3b;
   cursor: pointer;
@@ -65,4 +68,10 @@
 
 .playingTrunfo {
   font-weight: bold;
+}
+
+.noTrunfo {
+  font-weight: bold;
+  color: #ffffff00;
+  text-align: center;
 }

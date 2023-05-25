@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './navbar.css';
+import '../style/navbar.css';
 
 class NavBar extends Component {
   render() {

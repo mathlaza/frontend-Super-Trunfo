@@ -1,0 +1,29 @@
+.playHeader {
+  text-align: center;
+  border-bottom: solid 2px #325b3b;
+  padding: 5px;
+  background-color: hwb(48 93% 5%);
+}
+
+.headerInfo {
+  font-size: x-large;
+  font-weight: 600;
+  color: hwb(138 12% 79%);
+}
+
+.headerTitles {
+  color: rgb(89, 4, 89);
+}
+
+.cardsPlayingArea {
+  background: radial-gradient(80% 70% at 40% 40%, rgba(55, 78, 24, 0.712) 0%, rgba(89, 4, 89, 0.799) 100%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 1000px;
+}
+
+.playerArea {
+  text-align: center;
+  color: hwb(48 93% 5%);
+}

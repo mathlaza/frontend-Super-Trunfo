@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './cardPlaying.css';
+import '../../style/cardPlaying.css';
 
 class CardPlaying extends React.Component {
   render() {
@@ -77,13 +77,14 @@ class CardPlaying extends React.Component {
           </button>
 
           {cardTrunfo
-        && (
-          <div
-            className="playingTrunfoBox"
-            value="Trunfo"
-          >
-            <span className="playingTrunfo">Super Trunfo</span>
-          </div>)}
+            ? (
+              <div
+                className="playingTrunfoBox"
+                value="Trunfo"
+              >
+                <span className="playingTrunfo">Super Trunfo</span>
+              </div>)
+            : <div><span className="noTrunfo">No Trunfo</span></div>}
         </div>
       </div>
     );

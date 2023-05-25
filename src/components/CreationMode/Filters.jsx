@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './filters.css';
+import '../../style/filters.css';
 
 class Filters extends Component {
   render() {

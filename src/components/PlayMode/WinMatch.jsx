@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import '../../style/winMatch.css';
 
 class WinMatch extends React.Component {
   constructor({ deckPlayer1, deckPlayer2 }) {
@@ -19,12 +20,9 @@ class WinMatch extends React.Component {
 
   render() {
     return (
-      <section>
-        <div>
-          WinMatch!
-        </div>
-        <div>
-          { `Player ${this.whoWon()} won!!!` }
+      <section className="winMatchArea">
+        <div className="winningPlayer">
+          { `Player ${this.whoWon()} won !!!` }
         </div>
       </section>
     );

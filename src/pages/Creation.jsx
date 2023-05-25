@@ -5,7 +5,7 @@ import Card from '../components/CreationMode/Card';
 import Filters from '../components/CreationMode/Filters';
 import Collection from '../components/CreationMode/Collection';
 import { fieldValidations, imageValidation } from '../Validations';
-import './creation.css';
+import '../style/creation.css';
 
 class Creation extends Component {
   constructor() {

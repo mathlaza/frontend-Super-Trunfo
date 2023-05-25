@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './inputs.css';
+import '../../style/inputs.css';
 
 class Inputs extends React.Component {
   render() {

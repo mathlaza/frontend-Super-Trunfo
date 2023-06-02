@@ -177,7 +177,7 @@ class Creation extends Component {
           />
 
           <div className="cardsCriados">
-            {`Cards criados: ${savedCards}`}
+            {`Cards criados: ${savedCards.length}`}
           </div>
 
           <Collection
